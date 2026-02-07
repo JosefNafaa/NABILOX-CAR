@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nabilox Car - Professional car rental service in Rabat, Morocco. Available 24/7 with excellent customer reviews.">
+    <meta name="keywords" content="car rental, Rabat, Morocco, location voiture, تأجير السيارات">
+    <title>Nabilox Car - Car Rental in Rabat | Location de Voiture Rabat</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Places API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initGoogleReviews" async defer></script>
+</head>
+<body>
+    
+    <!-- Language Switcher & Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <a href="tel:+212661841971" class="me-3">
+                            <i class="fas fa-phone"></i> <span data-translate="phone">+212 6 61 84 19 71</span>
+                        </a>
+                        <span class="open-24">
+                            <i class="fas fa-clock"></i> <span data-translate="open24">Open 24/7</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="en" title="English">
+                            <span class="flag-icon">🇬🇧</span>
+                        </button>
+                        <button class="lang-btn" data-lang="fr" title="Français">
+                            <span class="flag-icon">🇫🇷</span>
+                        </button>
+                        <button class="lang-btn" data-lang="ar" title="العربية">
+                            <span class="flag-icon">🇲🇦</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/nabilox-logo.png" alt="Nabilox Car Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+                <span style="display: none; align-items: center;"><i class="fas fa-car"></i> <span data-translate="brandName">NABILOX CAR</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html#home" data-translate="navHome" data-page="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about" data-translate="navAbout" data-page="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cars.html" data-translate="navCars" data-page="cars">Our Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#services" data-translate="navServices" data-page="services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#reviews" data-translate="navReviews" data-page="reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact" data-translate="navContact" data-page="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 mx-auto text-center hero-content">
+                    <div class="rating-badge mb-4">
+                        <i class="fas fa-star"></i>
+                        <span>4.8/5</span>
+                        <small data-translate="basedOn">(Based on 16 Google Reviews)</small>
+                    </div>
+                    <h1 class="display-3 fw-bold mb-4" data-translate="heroTitle">
+                        Reliable Car Rental in Rabat
+                    </h1>
+                    <p class="lead mb-5" data-translate="heroSubtitle">
+                        Professional service available 24/7 - Your trusted partner for car rental in Morocco
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="tel:+212661841971" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-phone"></i> <span data-translate="btnCallNow">Call Now</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calendar-check"></i> <span data-translate="btnBookCar">Book a Car</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Key Features -->
+                    <div class="row mt-5 hero-features">
+                        <div class="col-md-4 mb-3">
+                            <div class="feature-box">
+                                <i class="fas fa-clock fa-2x mb-2"></i>
+                                <h5 data-translate="feature1Title">24/7 Service</h5>
+                                <p data-translate="feature1Desc">Always available</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="feature-box">
+                                <i class="fas fa-users fa-2x mb-2"></i>
+                                <h5 data-translate="feature2Title">Professional Team</h5>
+                                <p data-translate="feature2Desc">Expert service</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="feature-box">
+                                <i class="fas fa-star fa-2x mb-2"></i>
+                                <h5 data-translate="feature3Title">Excellent Reviews</h5>
+                                <p data-translate="feature3Desc">4.8/5 rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-image">
+                        <i class="fas fa-car-side fa-10x text-primary"></i>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-4" data-translate="aboutTitle">About Nabilox Car</h2>
+                    <p class="lead mb-4" data-translate="aboutText1">
+                        Nabilox Car is a trusted and professional car rental agency based in Rabat, Morocco. We are committed to providing exceptional service to our customers, whether you're a tourist exploring Morocco, a business professional, or a local resident.
+                    </p>
+                    <p data-translate="aboutText2">
+                        With our 24/7 availability and a fleet of well-maintained vehicles, we ensure that your transportation needs are always met with reliability and professionalism. Our excellent customer reviews speak to our dedication to quality service and customer satisfaction.
+                    </p>
+                    <div class="about-stats mt-4">
+                        <div class="row">
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-box">
+                                    <h3 class="text-primary">4.8</h3>
+                                    <p data-translate="statRating">Rating</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-box">
+                                    <h3 class="text-primary">24/7</h3>
+                                    <p data-translate="statAvailable">Available</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-box">
+                                    <h3 class="text-primary">16+</h3>
+                                    <p data-translate="statReviews">Reviews</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-box">
+                                    <h3 class="text-primary">100%</h3>
+                                    <p data-translate="statSatisfaction">Satisfaction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-translate="servicesTitle">Our Services</h2>
+                <p class="lead" data-translate="servicesSubtitle">Professional car rental solutions for every need</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4 data-translate="service1Title">Short & Long Term Rental</h4>
+                        <p data-translate="service1Desc">Flexible rental options from daily to monthly periods, tailored to your specific needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h4 data-translate="service2Title">Tourist Rentals</h4>
+                        <p data-translate="service2Desc">Perfect solutions for tourists exploring Morocco with comfortable and reliable vehicles.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4 data-translate="service3Title">Business Rentals</h4>
+                        <p data-translate="service3Desc">Professional car rental services for business travelers and corporate clients.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 data-translate="service4Title">Family Vehicles</h4>
+                        <p data-translate="service4Desc">Spacious and comfortable vehicles perfect for family trips and group travel.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 data-translate="service5Title">24/7 Availability</h4>
+                        <p data-translate="service5Desc">Round-the-clock service to meet your transportation needs at any time.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4 data-translate="service6Title">Local Expertise</h4>
+                        <p data-translate="service6Desc">Expert knowledge of Rabat and Morocco to help you navigate with confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-translate="reviewsTitle">Customer Reviews</h2>
+                <div class="google-rating mb-3">
+                    <i class="fab fa-google"></i>
+                    <span class="rating-number">4.8</span>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p data-translate="basedOn">(Based on 16 Google Reviews)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <div class="stars mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text" data-translate="review1">
+                            "Très bon service, je recommande vivement… la meilleure agence de location au Maroc."
+                        </p>
+                        <div class="reviewer">
+                            <i class="fas fa-user-circle"></i>
+                            <span data-translate="reviewer1">Customer Review</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <div class="stars mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text" data-translate="review2">
+                            "Très bonne expérience, très bonne équipe."
+                        </p>
+                        <div class="reviewer">
+                            <i class="fas fa-user-circle"></i>
+                            <span data-translate="reviewer2">Customer Review</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <div class="stars mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text" data-translate="review3">
+                            "Service excellent, très professionnel et respectueux."
+                        </p>
+                        <div class="reviewer">
+                            <i class="fas fa-user-circle"></i>
+                            <span data-translate="reviewer3">Customer Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-translate="contactTitle">Contact Us</h2>
+                <p class="lead" data-translate="contactSubtitle">Get in touch with us for your car rental needs</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-info-box">
+                        <h4 class="mb-4" data-translate="contactInfoTitle">Contact Information</h4>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h6 data-translate="phoneLabel">Phone</h6>
+                                <a href="tel:+212661841971">+212 6 61 84 19 71</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h6 data-translate="addressLabel">Address</h6>
+                                <p>25F3+29H Mokawama, Avenue de la Résistance<br>Rabat 10030, Morocco</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h6 data-translate="hoursLabel">Opening Hours</h6>
+                                <p data-translate="hours">Open 24/7</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h6 data-translate="ratingLabel">Rating</h6>
+                                <p>4.8/5 <span data-translate="basedOn">(Based on 16 Google Reviews)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-form-box">
+                        <h4 class="mb-4" data-translate="formTitle">Send us a message</h4>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" data-translate-placeholder="namePlaceholder" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" data-translate-placeholder="emailPlaceholder" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Your Phone" data-translate-placeholder="phonePlaceholder" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Your Message" data-translate-placeholder="messagePlaceholder" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" data-translate="btnSend">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Google Map -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.8299398974555!2d-6.849075324824344!3d34.02257591929717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76d006af9e653%3A0x8853df2f82fc368d!2sNabilox%20Car!5e0!3m2!1sfr!2sfr!4v1770478596663!5m2!1sfr!2sfr"
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="fas fa-car"></i> NABILOX CAR</h5>
+                    <p data-translate="footerDesc">Your trusted car rental partner in Rabat, Morocco. Professional service available 24/7.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 data-translate="footerQuickLinks">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html#home" data-translate="navHome">Home</a></li>
+                        <li><a href="index.html#about" data-translate="navAbout">About</a></li>
+                        <li><a href="cars.html" data-translate="navCars">Our Cars</a></li>
+                        <li><a href="index.html#services" data-translate="navServices">Services</a></li>
+                        <li><a href="index.html#reviews" data-translate="navReviews">Reviews</a></li>
+                        <li><a href="index.html#contact" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 data-translate="footerContact">Contact</h5>
+                    <p><i class="fas fa-phone"></i> +212 6 61 84 19 71</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rabat 10030, Morocco</p>
+                    <div class="social-links mt-3">
+                        <a href="https://wa.me/212661841971" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+212661841971"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; <span id="currentYear"></span> Nabilox Car. <span data-translate="footerRights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Call Button -->
+    <a href="tel:+212661841971" class="sticky-call-btn">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/212661841971" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Google Reviews Configuration -->
+    <script src="config.js"></script>
+    
+    <!-- Google Reviews Manager -->
+    <script src="js/google-reviews.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    
+    <!-- Set current year -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
