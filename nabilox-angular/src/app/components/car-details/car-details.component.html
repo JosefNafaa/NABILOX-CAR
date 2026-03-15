@@ -1,0 +1,61 @@
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="display-5 fw-bold mb-3" *ngIf="car">{{ car.brand }} {{ car.model }}</h1>
+        <h1 class="display-5 fw-bold mb-3" *ngIf="!car" data-translate="carsPageTitle">Our Cars</h1>
+        <p class="lead" data-translate="carsPageSubtitle">Browse our complete collection of rental vehicles</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="car-detail-section py-5" *ngIf="car; else noCarTpl">
+  <div class="container">
+    <div class="car-detail-card">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <div class="car-detail-image">
+            <img [src]="car.image" [alt]="car.brand + ' ' + car.model">
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="car-detail-content">
+            <p class="text-uppercase fw-semibold small mb-2">{{ car.brand }}</p>
+            <h2 class="mb-3">{{ car.model }}</h2>
+            <p class="car-detail-price mb-4"><strong>{{ car.price }} MAD</strong> {{ languageService.t('perDay') }}</p>
+
+            <div class="car-detail-specs mb-4">
+              <div class="spec-item"><i class="fas fa-calendar"></i> {{ languageService.t('year') }}: {{ car.year }}</div>
+              <div class="spec-item"><i class="fas fa-cog"></i> {{ languageService.t('transmissionType') }}: {{ car.transmission }}</div>
+              <div class="spec-item"><i class="fas fa-gas-pump"></i> {{ languageService.t('fuelType') }}: {{ car.fuel }}</div>
+              <div class="spec-item"><i class="fas fa-users"></i> {{ languageService.t('seats') }}: {{ car.seats }}</div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <a [href]="whatsappLink()" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                <i class="fas fa-calendar-check"></i> {{ languageService.t('bookNow') }}
+              </a>
+              <a href="tel:+212661841971" class="btn btn-outline-secondary btn-lg">
+                <i class="fas fa-phone"></i> <span data-translate="btnCallNow">Call Now</span>
+              </a>
+              <a [routerLink]="['/cars']" class="btn btn-link text-decoration-none">
+                ← <span data-translate="navCars">Our Cars</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #noCarTpl>
+  <section class="car-detail-section py-5">
+    <div class="container text-center">
+      <h3 data-translate="noResultsTitle">No vehicles found</h3>
+      <p class="text-muted mb-4" data-translate="noResultsText">Try adjusting your filters or search terms</p>
+      <a [routerLink]="['/cars']" class="btn btn-primary">Retour au catalogue</a>
+    </div>
+  </section>
+</ng-template>

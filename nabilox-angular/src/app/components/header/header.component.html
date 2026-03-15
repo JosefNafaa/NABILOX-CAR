@@ -1,0 +1,51 @@
+<div class="top-bar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="contact-info">
+          <a href="tel:+212661841971" class="me-3">
+            <i class="fas fa-phone"></i> <span data-translate="phone">+212 6 61 84 19 71</span>
+          </a>
+          <span class="open-24">
+            <i class="fas fa-clock"></i> <span data-translate="open24">Open 24/7</span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6 text-end">
+        <div class="language-switcher">
+          <button class="lang-btn" [class.active]="languageService.currentLang === 'en'" (click)="setLanguage('en')" title="English">
+            <span class="flag-icon">🇬🇧</span>
+          </button>
+          <button class="lang-btn" [class.active]="languageService.currentLang === 'fr'" (click)="setLanguage('fr')" title="Français">
+            <span class="flag-icon">🇫🇷</span>
+          </button>
+          <button class="lang-btn" [class.active]="languageService.currentLang === 'ar'" (click)="setLanguage('ar')" title="العربية">
+            <span class="flag-icon">🇲🇦</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" [class.navbar-scrolled]="isScrolled">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img *ngIf="!logoLoadError" src="images/nabilox-logo.png" alt="Nabilox Car Logo" (error)="onLogoError()">
+      <span *ngIf="logoLoadError" class="brand-fallback"><i class="fas fa-car"></i> <span data-translate="brandName">NABILOX CAR</span></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="home" data-translate="navHome">Home</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="about" data-translate="navAbout">About</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/cars']" routerLinkActive="active" data-translate="navCars">Our Cars</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="services" data-translate="navServices">Services</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="reviews" data-translate="navReviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="contact" data-translate="navContact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

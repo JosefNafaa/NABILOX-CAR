@@ -1,0 +1,13 @@
+<app-header [isScrolled]="isScrolled"></app-header>
+
+<router-outlet></router-outlet>
+
+<app-footer [currentYear]="currentYear"></app-footer>
+
+<a href="tel:+212661841971" class="sticky-call-btn" [style.opacity]="showFloatingButtons ? '1' : '0'" [style.visibility]="showFloatingButtons ? 'visible' : 'hidden'">
+  <i class="fas fa-phone"></i>
+</a>
+
+<a href="https://wa.me/212661841971" class="whatsapp-btn" target="_blank" rel="noopener" [style.opacity]="showFloatingButtons ? '1' : '0'" [style.visibility]="showFloatingButtons ? 'visible' : 'hidden'">
+  <i class="fab fa-whatsapp"></i>
+</a>

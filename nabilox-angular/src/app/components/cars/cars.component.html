@@ -1,0 +1,146 @@
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-3" data-translate="carsShowcase">OUR CARS</h1>
+        <p class="lead" data-translate="carsPageSubtitle">Browse our complete collection of rental vehicles</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cars-list-section py-5">
+  <div class="container">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-3">
+        <aside class="filters-sidebar">
+          <h5 class="mb-3" data-translate="searchLabel">Search</h5>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by brand or model..."
+              data-translate-placeholder="searchPlaceholder"
+              [(ngModel)]="searchTerm"
+            >
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-translate="brandLabel">Brand</label>
+            <select class="form-select" [(ngModel)]="brandFilter">
+              <option value="all" data-translate="allBrands">All Brands</option>
+              <option *ngFor="let brand of brandOptions; trackBy: trackByBrand" [value]="brand">{{ brand }}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-translate="fuelLabel">Fuel Type</label>
+            <select class="form-select" [(ngModel)]="fuelFilter">
+              <option value="all" data-translate="allFuels">All Types</option>
+              <option value="Diesel" data-translate="diesel">Diesel</option>
+              <option value="Essence" data-translate="essence">Essence</option>
+              <option value="Hybrid" data-translate="hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label" data-translate="transmissionLabel">Transmission</label>
+            <select class="form-select" [(ngModel)]="transmissionFilter">
+              <option value="all" data-translate="allTransmissions">All Types</option>
+              <option value="Auto" data-translate="automatic">Automatic</option>
+              <option value="Manuel" data-translate="manual">Manual</option>
+            </select>
+          </div>
+
+          <button class="btn btn-outline-secondary w-100" (click)="resetFilters()">
+            <i class="fas fa-redo"></i> <span data-translate="resetFilters">Reset Filters</span>
+          </button>
+        </aside>
+      </div>
+
+      <div class="col-lg-9">
+        <div class="row mb-4">
+          <div class="col-12">
+            <p class="results-count">
+              <span data-translate="showing">Showing</span>
+              <strong>{{ filteredCars.length }}</strong>
+              <span data-translate="vehicles">vehicles</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4" *ngIf="filteredCars.length > 0">
+          <div class="col-md-6 col-xl-4" *ngFor="let car of filteredCars; trackBy: trackByCarId">
+            <div class="car-card">
+              <div class="car-image">
+                <img [src]="car.image" [alt]="car.brand + ' ' + car.model" loading="lazy">
+                <div class="car-badge">{{ car.year }}</div>
+              </div>
+              <div class="car-details">
+                <p class="text-uppercase fw-semibold small mb-1">{{ car.brand }}</p>
+                <h5 class="car-title">{{ car.model }}</h5>
+                <div class="car-specs">
+                  <div class="spec-item">
+                    <i class="fas fa-money-bill-wave text-danger"></i>
+                    <span><strong>{{ car.price }} MAD</strong> {{ languageService.t('perDay') }}</span>
+                  </div>
+                  <div class="spec-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>{{ languageService.t('year') }}: {{ car.year }}</span>
+                  </div>
+                  <div class="spec-item">
+                    <i class="fas fa-gas-pump"></i>
+                    <span>{{ languageService.t('fuelType') }}: {{ car.fuel }}</span>
+                  </div>
+                  <div class="spec-item">
+                    <i class="fas fa-cog"></i>
+                    <span>{{ languageService.t('transmissionType') }}: {{ car.transmission }}</span>
+                  </div>
+                  <div class="spec-item">
+                    <i class="fas fa-users"></i>
+                    <span>{{ languageService.t('seats') }}: {{ car.seats }}</span>
+                  </div>
+                </div>
+                <div class="car-actions">
+                  <a [routerLink]="['/cars', car.id]" class="btn btn-outline-secondary btn-sm w-100 mb-2">
+                    {{ languageService.t('details') }}
+                  </a>
+                  <a [href]="whatsappLink(car)" class="btn btn-primary btn-sm w-100" target="_blank" rel="noopener">
+                    <i class="fas fa-calendar-check"></i> {{ languageService.t('bookNow') }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="filteredCars.length === 0">
+          <div class="col-12 text-center py-5" id="noResults">
+            <i class="fas fa-search fa-4x text-muted mb-3"></i>
+            <h3 data-translate="noResultsTitle">No vehicles found</h3>
+            <p class="text-muted" data-translate="noResultsText">Try adjusting your filters or search terms</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 class="mb-4" data-translate="ctaTitle">Ready to Rent a Car?</h2>
+        <p class="lead mb-4" data-translate="ctaText">Contact us now to book your preferred vehicle. We're available 24/7 to assist you.</p>
+        <div class="cta-buttons">
+          <a href="tel:+212661841971" class="btn btn-primary btn-lg me-3">
+            <i class="fas fa-phone"></i> <span data-translate="btnCallNow">Call Now</span>
+          </a>
+          <a href="https://wa.me/212661841971" class="btn btn-success btn-lg" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> <span data-translate="btnWhatsApp">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
