@@ -1,33 +1,3 @@
-<div class="top-bar">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <div class="contact-info">
-          <a href="tel:+212661841971" class="me-3">
-            <i class="fas fa-phone"></i> <span data-translate="phone">+212 6 61 84 19 71</span>
-          </a>
-          <span class="open-24">
-            <i class="fas fa-clock"></i> <span data-translate="open24">Open 24/7</span>
-          </span>
-        </div>
-      </div>
-      <div class="col-md-6 text-end">
-        <div class="language-switcher">
-          <button class="lang-btn" [class.active]="languageService.currentLang === 'en'" (click)="setLanguage('en')" title="English">
-            <span class="flag-icon">🇬🇧</span>
-          </button>
-          <button class="lang-btn" [class.active]="languageService.currentLang === 'fr'" (click)="setLanguage('fr')" title="Français">
-            <span class="flag-icon">🇫🇷</span>
-          </button>
-          <button class="lang-btn" [class.active]="languageService.currentLang === 'ar'" (click)="setLanguage('ar')" title="العربية">
-            <span class="flag-icon">🇲🇦</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" [class.navbar-scrolled]="isScrolled">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/']">
@@ -45,6 +15,35 @@
         <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="services" data-translate="navServices">Services</a></li>
         <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="reviews" data-translate="navReviews">Reviews</a></li>
         <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="contact" data-translate="navContact">Contact</a></li>
+        <li class="nav-item language-nav-item">
+          <div class="language-switcher" [class.open]="languageMenuOpen">
+            <button
+              type="button"
+              class="lang-dropdown-toggle"
+              (click)="toggleLanguageMenu($event)"
+              [attr.aria-expanded]="languageMenuOpen"
+              aria-label="Select language"
+            >
+              <img [src]="selectedLanguage.flag" [alt]="selectedLanguage.label" class="lang-flag" width="22" height="16">
+              <span class="lang-label">{{ selectedLanguage.shortLabel }}</span>
+              <i class="fas fa-chevron-down lang-caret"></i>
+            </button>
+
+            <ul class="lang-dropdown-menu" *ngIf="languageMenuOpen" role="listbox" aria-label="Languages">
+              <li *ngFor="let language of languageOptions; trackBy: trackByLanguageCode">
+                <button
+                  type="button"
+                  class="lang-option"
+                  [class.active]="languageService.currentLang === language.code"
+                  (click)="selectLanguage(language.code)"
+                >
+                  <img [src]="language.flag" [alt]="language.country" class="lang-flag" width="22" height="16">
+                  <span>{{ language.label }}</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
   </div>

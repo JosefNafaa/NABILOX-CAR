@@ -80,6 +80,9 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     if (this.languageService.currentLang === 'fr') {
       return `(Basé sur ${total} avis Google)`;
     }
+    if (this.languageService.currentLang === 'es') {
+      return `(Basado en ${total} resenas de Google)`;
+    }
     if (this.languageService.currentLang === 'ar') {
       return `(بناءً على ${total} تقييم على جوجل)`;
     }
@@ -91,6 +94,8 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     const message =
       lang === 'en'
         ? 'Thank you for your message! We will contact you soon.'
+        : lang === 'es'
+          ? 'Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.'
         : lang === 'fr'
           ? 'Merci pour votre message! Nous vous contacterons bientôt.'
           : 'شكراً لرسالتك! سنتواصل معك قريباً.';

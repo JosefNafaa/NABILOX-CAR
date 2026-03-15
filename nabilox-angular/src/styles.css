@@ -2,6 +2,7 @@
    Global Styles
    =================================== */
 :root {
+    color-scheme: light;
     --primary-color: #000000;
     --secondary-color: #1a1a1a;
     --accent-color: #C41E3A;
@@ -85,42 +86,93 @@ html[dir="rtl"] .text-end {
 
 /* Language Switcher */
 .language-switcher {
-    display: flex;
-    gap: 10px;
+    position: relative;
+    display: inline-block;
     justify-content: flex-end;
 }
 
-.lang-btn {
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+.lang-dropdown-toggle {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     color: white;
     padding: 8px 12px;
-    border-radius: 50%;
+    border-radius: 999px;
     cursor: pointer;
     transition: all 0.3s;
-    font-size: 24px;
-    width: 45px;
-    height: 45px;
+    font-size: 14px;
+    min-width: 110px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 8px;
 }
 
-.lang-btn .flag-icon {
-    font-size: 24px;
-    line-height: 1;
+.lang-dropdown-toggle:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.lang-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: white;
-    transform: scale(1.1);
-}
-
-.lang-btn.active {
-    background: var(--accent-color);
+.language-switcher.open .lang-dropdown-toggle {
     border-color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(196, 30, 58, 0.5);
+    box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2);
+}
+
+.lang-label {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+.lang-caret {
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+.lang-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    min-width: 180px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #0f141c;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.35);
+    z-index: 1200;
+}
+
+.lang-option {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: 500;
+}
+
+.lang-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-option.active {
+    background: rgba(196, 30, 58, 0.2);
+    color: #ffdce3;
+}
+
+.lang-flag {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    flex-shrink: 0;
 }
 
 /* ===================================
@@ -171,6 +223,21 @@ html[dir="rtl"] .text-end {
     color: white !important;
 }
 
+.navbar .language-nav-item {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.navbar .language-switcher {
+    margin-left: 4px;
+}
+
+.navbar .language-nav-item .lang-dropdown-toggle {
+    min-width: 96px;
+    padding: 7px 10px;
+}
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -204,9 +271,23 @@ html[dir="rtl"] .text-end {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: #0f1115;
     opacity: 0;
     transition: opacity 1.2s ease-in-out;
     z-index: 0;
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(180deg, rgba(6, 10, 16, 0.78) 0%, rgba(6, 10, 16, 0.84) 100%),
+        radial-gradient(circle at 15% 20%, rgba(34, 40, 51, 0.7) 0%, rgba(16, 19, 24, 0.7) 40%, rgba(7, 8, 11, 0.75) 100%);
+    pointer-events: none;
 }
 
 .hero-bg.active {
@@ -214,24 +295,15 @@ html[dir="rtl"] .text-end {
 }
 
 .hero-bg-1 {
-    background-image:
-        linear-gradient(180deg, rgba(6, 10, 16, 0.78) 0%, rgba(6, 10, 16, 0.84) 100%),
-        radial-gradient(circle at 15% 20%, rgba(34, 40, 51, 0.7) 0%, rgba(16, 19, 24, 0.7) 40%, rgba(7, 8, 11, 0.75) 100%),
-        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=80');
+    background-image: url('/images/hero/hero-1.jpg');
 }
 
 .hero-bg-2 {
-    background-image:
-        linear-gradient(180deg, rgba(6, 10, 16, 0.78) 0%, rgba(6, 10, 16, 0.84) 100%),
-        radial-gradient(circle at 15% 20%, rgba(34, 40, 51, 0.7) 0%, rgba(16, 19, 24, 0.7) 40%, rgba(7, 8, 11, 0.75) 100%),
-    url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=80');
+    background-image: url('/images/hero/hero-2.jpg');
 }
 
 .hero-bg-3 {
-    background-image:
-        linear-gradient(180deg, rgba(6, 10, 16, 0.78) 0%, rgba(6, 10, 16, 0.84) 100%),
-        radial-gradient(circle at 15% 20%, rgba(34, 40, 51, 0.7) 0%, rgba(16, 19, 24, 0.7) 40%, rgba(7, 8, 11, 0.75) 100%),
-        url('https://images.unsplash.com/photo-1486326658981-ed68abe5868e?auto=format&fit=crop&w=2000&q=80');
+    background-image: url('/images/hero/hero-3.jpg');
 }
 
 .hero-section::after {
@@ -885,6 +957,24 @@ html[dir="rtl"] .text-end {
     .language-switcher {
         justify-content: center;
         margin-top: 10px;
+    }
+
+    .navbar .language-nav-item {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .navbar .language-switcher {
+        margin-left: 0;
+    }
+
+    .lang-dropdown-toggle {
+        min-width: 96px;
+    }
+
+    .lang-dropdown-menu {
+        right: 50%;
+        transform: translateX(50%);
     }
 
     .top-bar .col-md-6 {
